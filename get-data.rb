@@ -1,7 +1,18 @@
 require 'rest-client'
 require 'json'
 require 'pry'
-require 'google-api-client'
+require 'yaml'
+require 'google_places'
 
-string_API_key = "AIzaSyA-vYv_4DHLtI_S0a2FWkfit5_IbYTjChQ"
+class GooglePlacesAPI
+  @@APIKey = ""
+  def initialize
+    @@APIKey = YAML.load_file('application.yml').values[0] # reads secret key from YAML
+    @client = GooglePlaces::Client.new(key) # creates Google Places object
+  end
 
+  # DATA!: https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&key=APIKEY
+  #RestClient
+  #json
+
+end
